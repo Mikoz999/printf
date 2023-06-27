@@ -2,7 +2,39 @@
 #include <unistd.h>
 #include "main.h"
 
-int _print_string(char *str);
+/**
+ * _putchar - Writes a character to stdout
+ * @c: The character to be written
+ *
+ * Return: On success, returns the number of characters written.
+ * On error, -1 is returned.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
+/**
+ * _print_string - Prints a string
+ * @str: The string to be printed
+ *
+ * Return: The number of characters printed
+ */
+int _print_string(char *str)
+{
+	int count = 0;
+
+	if (str == NULL)
+		str = "(null)";
+
+	while (*str)
+	{
+		count += _putchar(*str);
+		str++;
+	}
+
+	return (count);
+}
 
 /**
  * _printf - Produces output according to a format
@@ -53,28 +85,6 @@ int _printf(const char *format, ...)
 	}
 
 	va_end(args);
-
-	return (count);
-}
-
-/**
- * _print_string - Prints a string
- * @str: The string to be printed
- *
- * Return: The number of characters printed
- */
-int _print_string(char *str)
-{
-	int count = 0;
-
-	if (str == NULL)
-		str = "(null)";
-
-	while (*str)
-	{
-		count += _putchar(*str);
-		str++;
-	}
 
 	return (count);
 }
